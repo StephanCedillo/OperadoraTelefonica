@@ -19,30 +19,81 @@ public class AgendaTelefonica {
         OperadoraTelefonica operadoraUno = new OperadoraTelefonica(1, "Claro");
 
         Telefono telefonoUno = new Telefono(1312332, "Movil", operadoraUno, personaUno);
-       // System.out.println(telefonoUno.toString());
+        // System.out.println(telefonoUno.toString());
 
-       
         // Manejo listas en Java
         ArrayList<OperadoraTelefonica> operadoras = new ArrayList();
-        
+        ArrayList<Persona> personas = new ArrayList();
         Scanner leer = new Scanner(System.in);
-        
-        System.out.println("Ingresa el arreglo de 5 operadoras");
-        String continuar="";
-        do{
-            System.out.println("Ingresa el codigo");
-            int codigo= leer.nextInt();
-            leer.nextLine();
-            System.out.println("Ingresa el nombre");
-            String nombre= leer.nextLine();
-            
-            operadoras.add(new OperadoraTelefonica(codigo,nombre));
-            System.out.println("Desea ingresar otra operadora? ( S/N) ");
-            continuar= leer.nextLine();
-        }while (continuar.equalsIgnoreCase("S"));
-        for( OperadoraTelefonica operadora: operadoras){
-            System.out.println(operadora);
-        }
-              
+
+      
+        System.out.println("Menu de opciones \n 1. Registrar Contactos \n 2.Registrar Operadoras \n  3. Registrar Telefonos \n 4. Salir");
+        System.out.println("Ingresa numero del  menu ");
+        int numeroMenu = leer.nextInt();
+        leer.nextLine();
+        String continuar = "";
+        do {
+            switch (numeroMenu) {
+                case 1:
+                    do {
+                        System.out.println("Ingresa el numero de cedula");
+                        String numeroCedula = leer.next();
+                        leer.nextLine();
+                        System.out.println("Ingresa el nombre");
+                        String nombre = leer.nextLine();
+
+                        System.out.println("Ingresa la fecha de nacimiento : ");
+                        int año = leer.nextInt();
+                        while (año < 0 || año > (new Date().getYear() + 1900) ) {
+                            System.out.println("Usted ingreso datos imposibles porfavor ingresa la fecha de nacimiento : ");
+                            año = leer.nextInt();
+                        } ;
+                        System.out.println("Ingresar su dia de nacimiento");
+                        int dia = leer.nextByte();
+                        while (dia <= 0 || dia > 31) {
+                            System.out.println("Usted ingreso datos imposibles porfavor ingresar su dia de nacimiento");
+                            dia = leer.nextByte();
+                        };
+                        System.out.println("Ingresar su mes de nacimiento");
+                        int mes = leer.nextByte();
+                        while (mes <= 0 || mes >12) {
+                            System.out.println("Usted ingreso datos imposibles porfavor ingresar su mes de nacimiento");
+                            mes = leer.nextByte();
+
+                        };
+                        leer.nextLine();
+                        personas.add(new Persona(numeroCedula, nombre, new Date(año - 1900, mes - 1, dia)));
+                        System.out.println("Desea ingresar otro contacto? ( S/N) ");
+                        continuar = leer.nextLine();
+                    } while (continuar.equalsIgnoreCase("S"));
+                    break;
+                case 2:
+                    do {
+                        System.out.println("Ingresa el codigo");
+                        int codigo = leer.nextInt();
+                        leer.nextLine();
+                        System.out.println("Ingresa el nombre");
+                        String nombre = leer.nextLine();
+
+                        operadoras.add(new OperadoraTelefonica(codigo, nombre));
+                        System.out.println("Desea ingresar otra operadora? ( S/N) ");
+                        continuar = leer.nextLine();
+                    } while (continuar.equalsIgnoreCase("S"));
+                    break;
+                case 3:
+                    System.out.println("Registrar Telefono");
+                    break;
+                case 4: 
+                    System.out.println("Saliendo del programa");
+                    break;
+                default:
+                    System.out.println("Dato incorrecto, ingresar de nuevo");
+
+            }
+            System.out.println("Menu de opciones \n 1. Registrar Contactos \n 2.Registrar Operadoras \n  3. Registrar Telefonos \n 4. Salir");
+            System.out.println("Ingresa numero del  menu ");
+            numeroMenu = leer.nextInt();
+        } while (numeroMenu != 4);
+
     }
 }
