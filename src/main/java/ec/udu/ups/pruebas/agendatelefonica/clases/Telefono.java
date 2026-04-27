@@ -18,8 +18,14 @@ public class Telefono {
         this.tipo = tipo;
         this.operadora = operadora;
         this.unaPersona = unaPersona;
-
     }
+
+    public Telefono(int numero, String tipo) {
+        this.numero = numero;
+        this.tipo = tipo;
+    }
+    
+    
 
     public OperadoraTelefonica getOperadora() {
         return operadora;
@@ -55,8 +61,8 @@ public class Telefono {
 
     @Override
     public String toString() {
-        String resultado = "Datos del telefono " + "\n ";
-        resultado += "Numero de Telefono " + numero + "\n";
+        String resultado = "_____Datos del telefono_____" + "\n ";
+        resultado += "Numero de Telefono: " + numero + "\n";
         resultado += "Tipo:  " + tipo + "\n";
         resultado += unaPersona;
         resultado += operadora;

@@ -51,7 +51,7 @@ public class Persona {
     @Override
     public String toString() {
         String resultado = "Datos de la persona  " + "\n ";
-        resultado += "Numero de  cedula " + numeroCedula + "\n";
+        resultado += "Numero de  cedula: " + numeroCedula + "\n";
         resultado += "Nombre:  " + nombre + "\n";
         resultado += "Fecha nacimiento  :  " + fechaNac + "\n";
         return resultado;
