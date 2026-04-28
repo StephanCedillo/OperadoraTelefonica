@@ -32,8 +32,8 @@ public class OperadoraTelefonica {
 
     @Override
     public String toString() {
-        String resultado = "Datos de la operadora  " + "\n ";
-        resultado += "Codigo " + codigo + "\n";
+        String resultado = "-----Datos de la operadora " + "\n ";
+        resultado += "Codigo: " + codigo + "\n";
         resultado += "Nombre:  " + nombre + "\n";
         return resultado;
     }
